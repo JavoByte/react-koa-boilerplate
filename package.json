@@ -1,0 +1,37 @@
+{
+  "name": "webapp",
+  "version": "0.0.1",
+  "description": "Web frontend",
+  "main": "build/server.js",
+  "author": "Javier Enriquez <javier.lavida@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "debug": "^3.1.0",
+    "koa": "^2.5.0",
+    "moment-timezone": "^0.5.14"
+  },
+  "devDependencies": {
+    "@babel/polyfill": "^7.0.0-beta.42",
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/node": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "@babel/preset-react": "^7.0.0-beta.42",
+    "@babel/preset-stage-0": "^7.0.0-beta.42",
+    "@babel/register": "^7.0.0-beta.42",
+    "babel-loader": "^8.0.0-beta.2",
+    "chalk": "^2.3.2",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "rimraf": "^2.6.2",
+    "webpack": "^4.1.1"
+  },
+  "scripts": {
+    "clean": "babel-node tools/run clean",
+    "build": "babel-node tools/run build",
+    "start": "babel-node tools/run start"
+  }
+}

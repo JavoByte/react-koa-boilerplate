@@ -1,0 +1,7 @@
+build/*
+/yarn-error.log
+node_modules/
+
+
+#OS Files
+.DS_Store
