@@ -15,7 +15,7 @@ const runDevServer = () => new Promise((resolve) => {
     if (match) {
       [, server.host] = match;
       process.stderr.removeListener('data', onStdErr);
-      process.stderr.on('data', x => process.stderr.write(x));
+      server.stderr.on('data', x => process.stderr.write(x));
       pending = false;
       resolve(server);
       setTimeout(() => {
