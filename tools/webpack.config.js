@@ -20,10 +20,9 @@ const config = {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
-        include: [
-          path.resolve('..', 'src'),
-        ],
+        use: [{
+          loader: 'babel-loader',
+        }],
       },
     ],
   },
