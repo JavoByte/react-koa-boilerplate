@@ -5,7 +5,7 @@ import webpackConfig from './webpack.config';
 let server = null;
 let pending = true;
 
-const [serverConfig] = webpackConfig;
+const [, serverConfig] = webpackConfig;
 const serverSrc = path.join(serverConfig.output.path, serverConfig.output.filename);
 
 const runDevServer = () => new Promise((resolve) => {
@@ -21,6 +21,8 @@ const runDevServer = () => new Promise((resolve) => {
       setTimeout(() => {
         process.stderr.write(data);
       }, 500);
+    } else {
+      process.stderr.write(data);
     }
   };
 
