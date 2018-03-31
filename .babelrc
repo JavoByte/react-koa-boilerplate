@@ -4,14 +4,25 @@
       "@babel/preset-env",
       {
         "targets": {
-          "node": "8.9"
-        },
-        "plugins": [
-          "@babel/plugin-proposal-object-rest-spread"
-        ]
+          "node": "8.9",
+          "browsers": ["last 2 versions", "safari >= 7"]
+        }
       }
     ],
     "@babel/preset-stage-0",
     "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-object-rest-spread",
+    [
+      "module-resolver", {
+        "cwd": "babelrc",
+        "root": ["./src"],
+        "alias": {
+          "^~(.+)": "./src/\\1",
+          "withStyles": "isomorphic-style-loader/lib/withStyles"
+        }
+      }
+    ]
   ]
 }

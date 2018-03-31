@@ -1,0 +1,6 @@
+{
+  "name": "ApplicationMainContainer",
+  "main": "./ApplicationMainContainer.jsx",
+  "version": "0.0.0",
+  "private": true
+}

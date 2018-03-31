@@ -36,10 +36,11 @@ function run(fn, options) {
   const task = typeof fn.default === 'undefined' ? fn : fn.default;
   logger.log('Starting', chalk.bold(fn.name));
   const startTimestamp = +new Date();
-  return task({ logger, ...options }).then(() => {
+  return task({ logger, ...options }).then((results) => {
     const endTimestamp = +new Date();
     const elapsed = endTimestamp - startTimestamp;
     logger.log('Finished', chalk.bold(fn.name), `in ${elapsed}ms`);
+    return results;
   });
 }
 

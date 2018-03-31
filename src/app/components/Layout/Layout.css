@@ -1,0 +1,22 @@
+:global {
+  html {
+    font-size: responsive;
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    height: 100%;
+    margin: 0;
+
+    #root {
+      height: 100%;
+    }
+  }
+
+  /* Put here your global class names */
+
+  .button {
+    border-radius: 10px;
+  }
+};
