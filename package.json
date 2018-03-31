@@ -12,6 +12,7 @@
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.2",
     "moment-timezone": "^0.5.14",
+    "pretty-error": "^2.1.1",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"

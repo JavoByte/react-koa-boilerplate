@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Setup from './app/Setup';
+import Setup from './Setup';
 
 const insertCss = (...styles) => {
   // eslint-disable-next-line no-underscore-dangle

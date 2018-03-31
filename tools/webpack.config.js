@@ -74,7 +74,7 @@ const clientConfig = {
   target: 'web',
 
   entry: {
-    browser: ['@babel/polyfill', './src/browser.js'],
+    browser: ['@babel/polyfill', './src/browser/index.js'],
   },
 
   output: {
@@ -107,7 +107,7 @@ const serverConfig = {
   name: 'server',
   target: 'node',
   entry: {
-    server: ['@babel/polyfill', './src/server.js'],
+    server: ['@babel/polyfill', './src/server/index.js'],
   },
   externals: (() => {
     const nodeModules = {};

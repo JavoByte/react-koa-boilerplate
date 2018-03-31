@@ -2,7 +2,7 @@ import path from 'path';
 import Koa from 'koa';
 import serveStatic from 'koa-static';
 import debug from 'debug';
-import appRouter from './backend/routers/app';
+import appRouter from './routers/app';
 
 (() => {
   const logger = debug('my-awesome-app:server');
