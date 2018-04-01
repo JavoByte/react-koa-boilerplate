@@ -14,7 +14,7 @@ const runDevServer = () => new Promise((resolve) => {
     const match = data.toString('utf8').match(RUNNING_REGEXP);
     if (match) {
       [, server.host] = match;
-      process.stderr.removeListener('data', onStdErr);
+      server.stderr.removeListener('data', onStdErr);
       server.stderr.on('data', x => process.stderr.write(x));
       pending = false;
       resolve(server);

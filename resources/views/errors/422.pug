@@ -1,0 +1,70 @@
+doctype html
+html
+  head
+    title #{ title }
+    link(
+      rel='stylesheet'
+      href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+      integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm'
+      crossorigin='anonymous'
+    )
+    style.
+      body > .card {
+        border-radius: 0px;
+      }
+      pre {
+        background-color: #fafafa;
+        border: 1px solid #cdcdcd;
+        border-radius: 5px;
+        padding: 15px;
+      }
+      .json-key {
+        color: brown;
+      }
+      .json-value {
+        color: navy;
+      }
+      .json-string {
+        color: olive;
+      }
+  body
+    div.card.text-white.bg-warning.mb-3
+      div.card-body
+        h3.card-text #{title}
+    div.container
+      h4 #{ error.message }
+      if error.messages
+        pre
+          code#json
+            - var asString = JSON.stringify(error.messages)
+            | #{ asString }
+    script.
+      if (!library)
+        var library = {};
+
+      library.json = {
+        replacer: function(match, pIndent, pKey, pVal, pEnd) {
+          var key = '<span class=json-key>';
+          var val = '<span class=json-value>';
+          var str = '<span class=json-string>';
+          var r = pIndent || '';
+          if (pKey)
+            r = r + key + pKey.replace(/[": ]/g, '') + '</span>: ';
+          if (pVal)
+            r = r + (pVal[0] == '"' ? str : val) + pVal + '</span>';
+          return r + (pEnd || '');
+        },
+        prettyPrint: function(obj) {
+          var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg;
+          return JSON.stringify(obj, null, 3)
+            .replace(/&/g, '&amp;').replace(/\\"/g, '&quot;')
+            .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(jsonLine, library.json.replacer);
+        }
+      };
+      var element = document.getElementById('json');
+      if (element) {
+        var content = element.textContent;
+        content = library.json.prettyPrint(JSON.parse(content));
+        element.innerHTML = content;
+      }

@@ -3,6 +3,15 @@ import Router from 'koa-router';
 const router = new Router({ prefix: '/' });
 
 router.get('*', async (ctx) => {
+  const error = new Error('Invalid input');
+  error.status = 422;
+  const errors = {
+    name: [
+      'This field is required',
+    ],
+  };
+  error.messages = errors;
+  throw error;
   const html = `
     <!DOCTYPE html>
     <html>

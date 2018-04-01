@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import webpack from 'webpack';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 require.extensions['.scss'] = () => undefined;
 require.extensions['.css'] = () => undefined;
@@ -124,7 +125,12 @@ const serverConfig = {
     libraryTarget: 'commonjs',
   },
   plugins: [
-
+    new CopyWebpackPlugin([
+      {
+        from: 'resources/**',
+        to: '../..',
+      },
+    ]),
   ],
 
   node: {

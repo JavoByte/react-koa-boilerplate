@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    title
+      if error.message
+        | #{error.message}
+      else
+        | Internal server error
+    link(
+      rel='stylesheet'
+      href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+      integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm'
+      crossorigin='anonymous'
+    )
+    style.
+      body > .card {
+        border-radius: 0px;
+      }
+
+      .trace {
+        list-style: none;
+        overflow-x: auto;
+      }
+
+      .trace li {
+        white-space: nowrap;
+      }
+
+      .trace .file-name {
+        font-family: monospace;
+      }
+  body
+    div.card.text-white.bg-danger.mb-3
+      div.card-body
+        h3.card-text #{ title }
+    div.container
+      h4 #{ error.message }
+      ul.trace
+        each item in trace
+          li
+            if item.getFunctionName()
+              code #{ item.getFunctionName() }
+            if item.getFileName()
+              | &nbsp;
+              span.file-name #{ item.getFileName() }
+            if item.getLineNumber()
+              | &nbsp;
+              code #{ item.getLineNumber() }:#{ item.getColumnNumber() }
+

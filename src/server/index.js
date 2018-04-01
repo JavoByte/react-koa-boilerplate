@@ -2,6 +2,7 @@ import path from 'path';
 import Koa from 'koa';
 import serveStatic from 'koa-static';
 import debug from 'debug';
+import errorHandler from './middleware/errorHandler';
 import appRouter from './routers/app';
 
 (() => {
@@ -10,6 +11,7 @@ import appRouter from './routers/app';
   const port = process.env.PORT || 3000;
 
   app.use(serveStatic(path.resolve(__dirname, 'public')));
+  app.use(errorHandler);
 
   app
     .use(appRouter.routes())
