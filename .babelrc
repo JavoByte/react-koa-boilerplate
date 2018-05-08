@@ -19,10 +19,12 @@
         "cwd": "babelrc",
         "root": ["./src"],
         "alias": {
-          "^~(.+)": "./src/\\1",
+          "^~(.+)": "./src/browser/components/\\1",
+          "^/(.+)": "./",
           "withStyles": "isomorphic-style-loader/lib/withStyles"
         }
       }
-    ]
+    ],
+    "react-hot-loader/babel"
   ]
 }

@@ -27,6 +27,8 @@ const createLogger = () => {
     };
     logger[method] = newFunction;
   });
+  logger.trace = logger.error;
+  logger.debug = logger.log;
   return logger;
 };
 

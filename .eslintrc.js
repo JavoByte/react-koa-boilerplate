@@ -9,6 +9,13 @@ module.exports = {
       }
     ],
     'react/prefer-stateless-function': 'off',
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        'components': [ 'Link' ],
+        'specialLink': [ 'to' ],
+      }
+    ],
     'no-console': [
       'error',
       {

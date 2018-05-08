@@ -1,5 +1,6 @@
 import path from 'path';
 import cp from 'child_process';
+import pkg from '../package.json';
 import webpackConfig from './webpack.config';
 
 let server = null;
@@ -30,10 +31,13 @@ const runDevServer = () => new Promise((resolve) => {
     server.kill('SIGTERM');
   }
 
+  const appName = pkg.name;
+  const debugLevel = appName ? `${appName}:*` : '*';
+
   server = cp.spawn('node', [serverSrc], {
     env: {
       NODE_ENV: 'development',
-      DEBUG: '*',
+      DEBUG: debugLevel,
       DEBUG_COLORS: true,
       ...process.env,
     },

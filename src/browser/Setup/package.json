@@ -1,0 +1,7 @@
+{
+  "name": "Setup",
+  "main": "./Setup.jsx",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Application common configuration to create store, routes and main layout"
+}

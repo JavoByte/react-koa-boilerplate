@@ -6,6 +6,7 @@ module.exports = {
       {
         devDependencies: true,
       }
-    ]
+    ],
+    'react/prefer-stateless-function': 'off',
   }
 };
