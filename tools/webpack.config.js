@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import webpack from 'webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 require.extensions['.scss'] = () => undefined;
 require.extensions['.css'] = () => undefined;
@@ -71,11 +72,11 @@ const config = {
 
 const clientConfig = {
   ...config,
-  name: 'browser',
+  name: 'client',
   target: 'web',
 
   entry: {
-    browser: ['@babel/polyfill', './src/browser/index.js'],
+    client: ['@babel/polyfill', './src/browser/index.js'],
   },
 
   output: {
@@ -100,7 +101,16 @@ const clientConfig = {
     new webpack.DefinePlugin({
       DEBUG: process.env.DEBUG || (isDebug ? '*' : null),
     }),
+    new HtmlWebpackPlugin({
+      template: 'src/server/index.html',
+    }),
   ],
+
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 };
 
 const serverConfig = {

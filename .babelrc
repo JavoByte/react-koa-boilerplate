@@ -19,8 +19,8 @@
         "cwd": "babelrc",
         "root": ["./src"],
         "alias": {
-          "^~(.+)": "./src/browser/components/\\1",
-          "^/(.+)": "./",
+          "^~(.+)": "./src/browser/\\1",
+          "^>(.+)": "./src/\\1",
           "withStyles": "isomorphic-style-loader/lib/withStyles"
         }
       }

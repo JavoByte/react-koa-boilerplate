@@ -1,0 +1,6 @@
+{
+  "name": "PageLoader",
+  "main": "./PageLoader.jsx",
+  "private": true,
+  "version": "0.0.0"
+}

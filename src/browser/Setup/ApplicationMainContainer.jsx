@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import debug from 'debug';
-import Layout from '~Layout';
+import Layout from '~components/Layout';
 import Router from './Router';
 
 const logger = debug('ApplicationMainContainer');
