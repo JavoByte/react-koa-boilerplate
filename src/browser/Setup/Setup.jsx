@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hot } from 'react-hot-loader';
-import App from './ApplicationMainContainer';
+import { Provider } from 'react-redux';
+import Router from '>shared/Router';
+import Routes from '>shared/Routes';
+import Layout from '~components/Layout';
+import { configureStore } from '~store';
+
+const store = configureStore();
 
 class Setup extends React.Component {
   static childContextTypes = {
@@ -20,10 +25,22 @@ class Setup extends React.Component {
 
   render() {
     return (
-      <App />
+      <Provider store={store}>
+        <Router>
+          <Layout>
+            <Routes />
+          </Layout>
+        </Router>
+      </Provider>
     );
   }
 }
 
-
-export default hot(module)(Setup);
+export default (() => {
+  if (__DEV__) {
+    // eslint-disable-next-line global-require
+    const { hot } = require('react-hot-loader');
+    return hot(module)(Setup);
+  }
+  return Setup;
+})();

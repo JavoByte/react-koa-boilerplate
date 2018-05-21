@@ -19,8 +19,8 @@ async function start({ logger }) {
     let hotMiddleware;
 
     if (isDebug) {
-      clientConfig.entry.browser = [
-        ...clientConfig.entry.browser,
+      clientConfig.entry.client = [
+        ...clientConfig.entry.client,
         'webpack-hot-middleware/client',
       ];
       clientConfig.plugins.push(new webpack.HotModuleReplacementPlugin());

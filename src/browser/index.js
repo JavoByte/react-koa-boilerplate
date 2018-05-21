@@ -9,4 +9,4 @@ const insertCss = (...styles) => {
   return () => { removeCss.forEach(f => f()); };
 };
 
-ReactDOM.render(<Setup insertCss={insertCss} />, document.getElementById('root'));
+ReactDOM.render(<Setup insertCss={insertCss} />, document.getElementById('app'));

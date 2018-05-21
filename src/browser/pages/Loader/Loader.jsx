@@ -1,13 +1,13 @@
 import React from 'react';
 
-class About extends React.Component {
+class Loader extends React.Component {
   render() {
     return (
       <div>
-        About pages
+        Loading...
       </div>
     );
   }
 }
 
-export default About;
+export default Loader;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Example from '~connectedComponents/Example';
 
 class Home extends React.Component {
   render() {
@@ -7,6 +8,7 @@ class Home extends React.Component {
       <div>
         This is the home page
         <br />
+        <Example />
         <Link to="/about">Go to about page</Link>
       </div>
     );
