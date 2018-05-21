@@ -1,6 +1,6 @@
+import debug from 'debug';
 import fs from 'fs';
 import path from 'path';
-import debug from 'debug';
 import Router from 'koa-router';
 
 const router = new Router({ prefix: '/' });

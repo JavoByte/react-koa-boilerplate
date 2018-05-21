@@ -6,10 +6,8 @@ class About extends React.Component {
     return (
       <div>
         About page
-
         <br />
-
-        <Link to="/">Go Home</Link>
+        <Link to="/">Go back home</Link>
       </div>
     );
   }

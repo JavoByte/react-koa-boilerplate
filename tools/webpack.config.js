@@ -112,7 +112,11 @@ const clientConfig = {
     new HtmlWebpackPlugin({
       template: 'src/server/index.html',
     }),
+    new HtmlWebpackPlugin({
+      template: 'src/server/index.html',
+    }),
   ],
+
   optimization: {
     splitChunks: {
       chunks: 'all',

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'withStyles';
-import debug from 'debug';
 import s from './Layout.css';
 
 class Layout extends React.Component {
@@ -14,7 +13,6 @@ class Layout extends React.Component {
   };
 
   render() {
-    debug(`${process.env.APP_NAME}:Layout`)('Rendering Layout', process.env.DEBUG);
     return (
       <div className={s.container}>
         <h1>
