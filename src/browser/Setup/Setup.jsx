@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
+import { hot } from 'react-hot-loader';
 import Router from '>shared/Router';
 import Routes from '>shared/Routes';
 import Layout from '~components/Layout';
@@ -36,11 +37,4 @@ class Setup extends React.Component {
   }
 }
 
-export default (() => {
-  if (__DEV__) {
-    // eslint-disable-next-line global-require
-    const { hot } = require('react-hot-loader');
-    return hot(module)(Setup);
-  }
-  return Setup;
-})();
+export default hot(module)(Setup);
