@@ -1,0 +1,13 @@
+[ignore]
+.*/build/
+.*/resources/
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]

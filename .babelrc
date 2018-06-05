@@ -10,10 +10,10 @@
       }
     ],
     "@babel/preset-stage-0",
-    "@babel/preset-react"
+    "@babel/preset-react",
+    "@babel/preset-flow"
   ],
   "plugins": [
-    "@babel/plugin-proposal-object-rest-spread",
     [
       "module-resolver", {
         "cwd": "babelrc",
