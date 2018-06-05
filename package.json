@@ -82,6 +82,7 @@
   "lint-staged": {
     "*.js": [
       "eslint --fix src",
+      "flow focus-check",
       "git add"
     ]
   }
