@@ -1,2 +1,10 @@
-Check closely this issue:
-https://github.com/tleunen/eslint-import-resolver-babel-module/issues/82
+React Koa Boilerplate
+======================
+
+Features
+---------
+
+* Server side rendering
+* PostCSS
+* Flow
+* Code splitting
