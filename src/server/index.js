@@ -11,7 +11,7 @@ import appRouter from './routers/app';
   const logger = debug(`${appName}:server`);
   const app = new Koa();
   app.context.name = appName;
-  const port = process.env.PORT || 3000;
+  const port = process.env.APP_PORT || 3000;
 
 
   app.use(serveStatic(path.resolve(__dirname, 'public')));
