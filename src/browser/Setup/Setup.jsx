@@ -5,17 +5,20 @@ import { hot } from 'react-hot-loader';
 import Router from '>shared/Router';
 import Routes from '>shared/Routes';
 import Layout from '~components/Layout';
-import { configureStore } from '~store';
-
-const store = configureStore();
 
 class Setup extends React.Component {
+  static propTypes = {
+    insertCss: PropTypes.func.isRequired,
+    store: PropTypes.any.isRequired, // eslint-disable-line react/forbid-prop-types
+    context: PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  };
+
   static childContextTypes = {
     insertCss: PropTypes.func,
   };
 
-  static propTypes = {
-    insertCss: PropTypes.func.isRequired,
+  static defaultProps = {
+    context: undefined,
   };
 
   getChildContext() {
@@ -26,8 +29,8 @@ class Setup extends React.Component {
 
   render() {
     return (
-      <Provider store={store}>
-        <Router>
+      <Provider store={this.props.store}>
+        <Router context={this.props.context}>
           <Layout>
             <Routes />
           </Layout>

@@ -1,6 +1,7 @@
 {
   "name": "Router",
-  "main": "./Router.jsx",
+  "main": "./Router.server.jsx",
+  "browser": "./Router.browser.jsx",
   "version": "0.0.0",
   "private": true
 }

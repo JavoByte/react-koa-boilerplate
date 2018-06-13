@@ -1,10 +1,18 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
+import Loadable from 'react-loadable';
 import NotFound from '~pages/NotFound';
-import generateLoadableComponent from './generateLoadableComponent';
+import PageLoader from '~components/PageLoader';
 
-const Home = generateLoadableComponent(() => import('~pages/Home'));
-const About = generateLoadableComponent(() => import('~pages/About'));
+const Home = Loadable({
+  loader: () => import('~pages/Home'),
+  loading: PageLoader,
+});
+
+const About = Loadable({
+  loader: () => import('~pages/About'),
+  loading: PageLoader,
+});
 
 export default () => (
   <Switch>

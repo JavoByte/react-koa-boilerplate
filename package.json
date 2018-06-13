@@ -7,6 +7,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "debug": "^3.1.0",
     "flow-bin": "^0.73.0",
     "koa": "^2.5.0",

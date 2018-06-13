@@ -3,6 +3,7 @@ import fs from 'fs';
 import webpack from 'webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { ReactLoadablePlugin } from 'react-loadable/webpack';
 import pkg from '../package.json';
 
 const appName = pkg.name;
@@ -68,6 +69,17 @@ const config = {
     extensions: ['.js', '.jsx'],
   },
 
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.DEBUG': process.env.DEBUG || (isDebug ? `"${appName}:*"` : null),
+      'process.env.NODE_ENV': isDebug ? '"development"' : '"production"',
+      'process.env.BROWSER': 'typeof window !== "undefined"',
+      'process.env.APP_NAME': `"${appName}"`,
+      __APP_NAME__: `"${appName}"`,
+      __DEV__: isDebug,
+    }),
+  ],
+
   bail: !isDebug,
   cache: isDebug,
   mode: isDebug ? 'development' : 'production',
@@ -101,19 +113,12 @@ const clientConfig = {
   },
 
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.DEBUG': process.env.DEBUG || (isDebug ? `"${appName}:*"` : null),
-      'process.env.NODE_ENV': isDebug ? '"development"' : '"production"',
-      'process.env.BROWSER': true,
-      'process.env.APP_NAME': `"${appName}"`,
-      __APP_NAME__: `"${appName}"`,
-      __DEV__: isDebug,
-    }),
+    ...config.plugins,
     new HtmlWebpackPlugin({
       template: 'src/server/index.html',
     }),
-    new HtmlWebpackPlugin({
-      template: 'src/server/index.html',
+    new ReactLoadablePlugin({
+      filename: './build/react-loadable.json',
     }),
   ],
 
@@ -146,12 +151,16 @@ const serverConfig = {
     libraryTarget: 'commonjs',
   },
   plugins: [
+    ...config.plugins,
     new CopyWebpackPlugin([
       {
         from: 'resources/**',
         to: '../..',
       },
     ]),
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1,
+    }),
   ],
 
   node: {

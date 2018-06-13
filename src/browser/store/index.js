@@ -5,7 +5,7 @@ import rootReducer from './reducers';
 
 let store;
 
-export function configureStore() {
+export function configureStore(initialState) {
   if (store) {
     return store;
   }
@@ -26,7 +26,17 @@ export function configureStore() {
   } else {
     enhancer = applyMiddleware(...middleware);
   }
-  store = createStore(rootReducer, {}, enhancer);
+  store = createStore(
+    rootReducer,
+    // eslint-disable-next-line no-underscore-dangle
+    initialState || (window ? window.__PRELOADED_STATE__ : {}),
+    enhancer,
+  );
+
+  if (process.env.BROWSER) {
+    // eslint-disable-next-line no-underscore-dangle
+    delete window.__PRELOADED_STATE__;
+  }
 
   return store;
 }

@@ -1,16 +1,14 @@
 import debug from 'debug';
-import fs from 'fs';
-import path from 'path';
 import Router from 'koa-router';
+import renderReact from '>server/utils/renderReact';
 
 const router = new Router({ prefix: '/' });
 
 router.get('*', async (ctx) => {
   const logger = debug(`${ctx.name}:router:app`);
   logger('Processing request for', ctx.request.path);
-  const data = fs.readFileSync(path.resolve(__dirname, 'public/assets/index.html'));
-  ctx.response.type = 'text/html';
-  ctx.response.body = data;
+  const html = await renderReact(ctx.request.url, { example: 1 });
+  ctx.response.body = html;
 });
 
 export default router;

@@ -1,6 +1,8 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Loadable from 'react-loadable';
+import { configureStore } from './store';
 import Setup from './Setup';
 
 const insertCss = (...styles) => {
@@ -9,4 +11,8 @@ const insertCss = (...styles) => {
   return () => { removeCss.forEach(f => f()); };
 };
 
-ReactDOM.render(<Setup insertCss={insertCss} />, document.getElementById('app'));
+const store = configureStore();
+
+Loadable.preloadReady().then(() => {
+  ReactDOM.hydrate(<Setup insertCss={insertCss} store={store} />, document.getElementById('app'));
+});
