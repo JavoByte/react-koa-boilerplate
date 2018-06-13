@@ -14,12 +14,6 @@ module.exports = {
     __DEV__: true,
   },
   rules: {
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        packageDir: './'
-      }
-    ],
     'react/prefer-stateless-function': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
