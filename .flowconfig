@@ -9,5 +9,8 @@
 [lints]
 
 [options]
+module.name_mapper='^~\(.+\)' -> '<PROJECT_ROOT>/src/browser/\1'
+module.name_mapper='^>\(.+\)'->'<PROJECT_ROOT>/src/\1'
+module.name_mapper='withStyles' -> 'isomorphic-style-loader/lib/withStyles'
 
 [strict]
