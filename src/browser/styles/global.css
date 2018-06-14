@@ -1,0 +1,7 @@
+@import "variables.css";
+@import "tachyons";
+
+html {
+  font-size: responsive;
+  @inherit: .sans-serif;
+}

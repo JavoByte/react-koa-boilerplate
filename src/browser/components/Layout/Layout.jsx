@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'withStyles';
-import s from './Layout.css';
+import s from '~styles/global.css';
 
 class Layout extends React.Component {
   static propTypes = {
@@ -14,13 +14,9 @@ class Layout extends React.Component {
 
   render() {
     return (
-      <div className={s.container}>
-        <h1>
-          Your application is up and running
-        </h1>
-
+      <React.Fragment>
         { this.props.children }
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -14,6 +14,41 @@ require.extensions['.css'] = () => undefined;
 const isDebug = !process.argv.includes('--release');
 const isVerbose = process.argv.includes('--verbose');
 
+const cssRule = {
+  test: /\.css$/,
+  exclude: /global\.css$/,
+  use: [
+    'isomorphic-style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        importLoaders: 1,
+        sourceMap: isDebug,
+        // CSS Modules https://github.com/css-modules/css-modules
+        modules: true,
+        localIdentName: isDebug ? '[name]-[local]-[hash:base64:5]' : '[hash:base64:5]',
+        // CSS Nano http://cssnano.co/options/
+        minimize: !isDebug,
+        camelCase: 'dashes',
+        discardComments: { removeAll: !isDebug },
+      },
+    },
+    {
+      loader: 'postcss-loader',
+      options: {
+        config: {
+          path: './tools/postcss.config.js',
+        },
+      },
+    },
+  ],
+};
+
+const globalCssRule = JSON.parse(JSON.stringify(cssRule));
+delete globalCssRule.exclude;
+globalCssRule.test = /global\.css$/;
+globalCssRule.use[1].options.modules = false;
+
 /*
  * Server and client shared configuration
 */
@@ -34,34 +69,8 @@ const config = {
           loader: 'babel-loader',
         }],
       },
-      {
-        test: /\.css$/,
-        use: [
-          'isomorphic-style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              sourceMap: isDebug,
-              // CSS Modules https://github.com/css-modules/css-modules
-              modules: true,
-              localIdentName: isDebug ? '[name]-[local]-[hash:base64:5]' : '[hash:base64:5]',
-              // CSS Nano http://cssnano.co/options/
-              minimize: !isDebug,
-              camelCase: 'dashes',
-              discardComments: { removeAll: !isDebug },
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              config: {
-                path: './tools/postcss.config.js',
-              },
-            },
-          },
-        ],
-      },
+      cssRule,
+      globalCssRule,
     ],
   },
 
