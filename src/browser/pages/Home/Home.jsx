@@ -1,3 +1,4 @@
+import { hot } from 'react-hot-loader';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Example from '~connectedComponents/Example';
@@ -15,4 +16,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default hot(module)(Home);

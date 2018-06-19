@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { hot } from 'react-hot-loader';
 import Router from '>shared/Router';
 import Routes from '>shared/Routes';
 import Layout from '~components/Layout';
@@ -40,4 +39,4 @@ class Setup extends React.Component {
   }
 }
 
-export default hot(module)(Setup);
+export default Setup;
